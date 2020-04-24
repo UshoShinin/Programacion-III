@@ -4,3 +4,9 @@ C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Dominio\obj\Debug\Domin
 C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Dominio\obj\Debug\Dominio.dll
 C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Dominio\obj\Debug\Dominio.pdb
+C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Programacion-III\Dominio\bin\Debug\Dominio.dll
+C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Programacion-III\Dominio\bin\Debug\Dominio.pdb
+C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Programacion-III\Dominio\obj\Debug\Dominio.csprojAssemblyReference.cache
+C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Programacion-III\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Programacion-III\Dominio\obj\Debug\Dominio.dll
+C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Programacion-III\Dominio\obj\Debug\Dominio.pdb

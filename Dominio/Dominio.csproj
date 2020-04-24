@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntidadesPortLog\Importacion.cs" />
+    <Compile Include="EntidadesPortLog\Producto.cs" />
     <Compile Include="EntidadesPortLog\Usuario.cs" />
     <Compile Include="InterfacesRepositorios\IRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

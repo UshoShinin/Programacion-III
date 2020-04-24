@@ -11,11 +11,20 @@ namespace Dominio.EntidadesPortLog
 {
     public class Importacion
     {
+        #region Atributos
         private int cod;
-
         private string nombre;
+        private DateTime fechaIngreso;
+        private DateTime fechaSalidaPrevista;
+        private Producto producto;
+        private int cantidad;
+        private int precio;
+        #endregion
+
+        #region Propiedades
 
         public int Cod
+        
         {
             get { return cod; }
             set { cod = value; }
@@ -26,6 +35,41 @@ namespace Dominio.EntidadesPortLog
             set { nombre = value; }
         }
 
+
+        public DateTime FechaIngreso
+        {
+            get { return fechaIngreso; }
+            set { fechaIngreso = value; }
+        }
+        
+        public DateTime FechaSalidaPrevista
+        {
+            get { return fechaSalidaPrevista; }
+            set { fechaSalidaPrevista = value; }
+        }
+
+
+        public Producto Producto
+        {
+            get { return producto; }
+            set { producto = value; }
+        }
+
+
+        public int Cantidad
+        {
+            get { return cantidad; }
+            set { cantidad = value; }
+        }
+
+
+        public int Precio
+        {
+            get { return precio; }
+            set { precio = value; }
+        }
+
+        #endregion
         public bool Validar()
         {
             throw new NotImplementedException();

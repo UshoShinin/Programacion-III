@@ -19,13 +19,11 @@ namespace Dominio.EntidadesPortLog
             get { return ci; }
             set { ci = value; }
         }
-
         public string Password
         {
             get { return password; }
             set { password = value; }
         }
-
         public string Rol
         {
             get { return rol; }

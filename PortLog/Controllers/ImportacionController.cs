@@ -42,5 +42,9 @@ namespace PortLog.Controllers
             }
             catch { return View(); }
         }
+        public ActionResult Create()
+        {
+            return View();
+        }
     }
 }

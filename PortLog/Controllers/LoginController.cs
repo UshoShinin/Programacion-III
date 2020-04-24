@@ -19,6 +19,10 @@ namespace PortLog.Controllers
         {
             return View();
         }
+
+        public ActionResult HolaMama() {
+            return View();
+        }
         [HttpPost]
         public ActionResult Logearse(Usuario usuario)
         {
@@ -27,10 +31,11 @@ namespace PortLog.Controllers
                 if (ModelState.IsValid)
                 {
                     Usuario usu = repo.FindById(usuario.CI);
+
                     if (usu != null && usu.Password == usuario.Password && usu.Rol == usuario.Rol)
                     {
                         ViewBag.Message = "Exito";
-                        return RedirectToAction("Index");
+                        return RedirectToAction("HolaMama");
                     }
                     else
                     {

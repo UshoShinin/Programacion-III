@@ -34,6 +34,8 @@ namespace Repositorios
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = "Select * FROM Usuario WHERE CI=@CI";
+                cmd.Connection = cn;
+                cmd.Parameters.AddWithValue("@CI", CI);
                 cn.Open();
                 SqlDataReader readerUsuario = cmd.ExecuteReader();
                 Usuario UsuarioLogeado = null;
@@ -44,7 +46,7 @@ namespace Repositorios
                         UsuarioLogeado = new Usuario
                         {
                             CI = (int)readerUsuario["CI"],
-                            Password = readerUsuario["Password"].ToString(),
+                            Password = readerUsuario["Pass"].ToString(),
                             Rol = readerUsuario["Rol"].ToString()
 
                         };
