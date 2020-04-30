@@ -23,10 +23,25 @@ namespace Repositorios
             try
             {
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "INSERT INTO Importacion VALUES(@Cod,@Nombre)";
+                cmd.CommandText = "INSERT INTO Importacion VALUES(@Cod,@fechaI,@fechaS,@Cantidad,@Precio)";
+                cmd.Parameters.AddWithValue("@Cod", unObjeto.Producto.Cod);
+                SqlParameter parameter1 = new SqlParameter();
+                parameter1.ParameterName = "@fechaI";
+                parameter1.SqlDbType = SqlDbType.DateTime2;
+                parameter1.Value = unObjeto.FechaIngreso;
+                cmd.Parameters.Add(parameter1);
+
+                SqlParameter parameter2 = new SqlParameter();
+                parameter2.ParameterName = "@fechaS";
+                parameter2.SqlDbType = SqlDbType.DateTime2;
+                parameter2.Value = unObjeto.FechaSalidaPrevista;
+                cmd.Parameters.Add(parameter2);
+
+                cmd.Parameters.AddWithValue("@Cantidad", unObjeto.Cantidad);
+                cmd.Parameters.AddWithValue("@Precio", unObjeto.Precio);
                 cmd.Connection = cn;
-                cmd.Parameters.AddWithValue("@Cod", unObjeto.Cod);
-                cmd.Parameters.AddWithValue("@Nombre", unObjeto.Nombre);
+                
+                
                 cn.Open();
                 int filas = cmd.ExecuteNonQuery();
                 cn.Close();
@@ -60,7 +75,7 @@ namespace Repositorios
                         Importaciones.Add(new Importacion
                         {
                             Cod = (int)readerImportacion["Cod"],
-                            Nombre = readerImportacion["Nombre"].ToString()
+                            
                         });
                     }
                     cn.Close();

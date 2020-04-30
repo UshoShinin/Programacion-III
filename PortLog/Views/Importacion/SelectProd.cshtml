@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Dominio.EntidadesPortLog.Producto>
+
+
+<div style="padding-left:37%;">
+    <form action="/Importacion/Create">
+        <h4>Seleccionar producto</h4>
+        @if (Model != null){
+            <select name="Id">
+                @foreach (var item in Model)
+                {
+                    <option value="@item.Cod">@item.Nombre</option>
+                }
+            </select>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Importar" class="btn btn-default" />
+                </div>
+            </div>
+        }
+        else
+        {
+            <h4>No hay productos para mostrar</h4>
+        }
+
+    </form>
+</div>
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

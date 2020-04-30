@@ -14,6 +14,7 @@ namespace PortLog.Controllers
     public class ImportacionController : Controller
     {
         private RepositorioImportaciones repo = new RepositorioImportaciones();
+        private RepositorioProducto repoP = new RepositorioProducto();
         // GET: Importacion
         public ActionResult Index()
         {
@@ -42,9 +43,48 @@ namespace PortLog.Controllers
             }
             catch { return View(); }
         }
-        public ActionResult Create()
+        public ActionResult Create(string Id)
         {
-            return View();
+
+            if (Id == null) return View();
+            int cod;
+            Int32.TryParse(Id,out cod);//No se logra parsear el resultado del selec a int para utilizar el FindById
+            Producto P = repoP.FindById(cod);
+            return View(new Importacion {Producto=P});
         }
+        public ActionResult SelectProd() {
+            IEnumerable<Producto> productos = repoP.FindAll();
+            if (productos == null || productos.Count() == 0)
+            {
+                ViewBag.Mensaje = "No hay clientes registrados";
+            }
+            else
+                ViewBag.Mensaje = "Operación exitosa";
+            return View(productos);
+        }
+        [HttpPost]
+        public ActionResult Create(Importacion importacion) {
+            {
+                try
+                {
+                    if (ModelState.IsValid)
+                    {
+                        if (importacion.Validar()) {
+                            importacion.Producto = repoP.FindById(importacion.Cod);
+                            if (repo.Add(importacion))
+                                return RedirectToAction("Index");
+                        }
+                        
+                    }
+                    return View(importacion);
+                }
+                catch
+                {
+                    return View();
+                }
+            }
+        }
+
     }
+
 }

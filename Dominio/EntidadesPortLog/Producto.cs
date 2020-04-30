@@ -12,7 +12,7 @@ namespace Dominio.EntidadesPortLog
         private int cod;
         private string nombre;
         private int peso;
-        private long rut;
+        private string rut;
         #endregion
 
         #region Propiedades
@@ -33,7 +33,7 @@ namespace Dominio.EntidadesPortLog
             set { peso = value; }
         }
 
-        public long Rut
+        public string Rut
         {
             get { return rut; }
             set { rut = value; }

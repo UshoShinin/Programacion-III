@@ -13,7 +13,6 @@ namespace Dominio.EntidadesPortLog
     {
         #region Atributos
         private int cod;
-        private string nombre;
         private DateTime fechaIngreso;
         private DateTime fechaSalidaPrevista;
         private Producto producto;
@@ -29,12 +28,6 @@ namespace Dominio.EntidadesPortLog
             get { return cod; }
             set { cod = value; }
         }
-        public string Nombre
-        {
-            get { return nombre; }
-            set { nombre = value; }
-        }
-
 
         public DateTime FechaIngreso
         {
@@ -72,7 +65,7 @@ namespace Dominio.EntidadesPortLog
         #endregion
         public bool Validar()
         {
-            throw new NotImplementedException();
+            return fechaIngreso<=fechaSalidaPrevista;
         }
     }
 }

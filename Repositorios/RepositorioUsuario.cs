@@ -55,7 +55,7 @@ namespace Repositorios
                 }
                 return UsuarioLogeado;
             }
-            catch(Exception ex)
+            catch
             {
                 return null;
             }
