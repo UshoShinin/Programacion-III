@@ -17,13 +17,13 @@ namespace Repositorios
         private string cadenaConexion = ConfigurationManager.ConnectionStrings["miConexion"].ConnectionString;
         public bool Add(Importacion unObjeto)
         {
-            if (unObjeto == null || !unObjeto.Validar()) return false;
+            if (unObjeto == null)  return false;
 
             SqlConnection cn = new SqlConnection(cadenaConexion);
             try
             {
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "INSERT INTO Importacion VALUES(@Cod,@fechaI,@fechaS,@Cantidad,@Precio)";
+                cmd.CommandText = "INSERT INTO Importacion VALUES(@Cod,@fechaI,@fechaS,@Cantidad,@Precio,@Entregado)";
                 cmd.Parameters.AddWithValue("@Cod", unObjeto.Producto.Cod);
                 SqlParameter parameter1 = new SqlParameter();
                 parameter1.ParameterName = "@fechaI";
@@ -39,6 +39,7 @@ namespace Repositorios
 
                 cmd.Parameters.AddWithValue("@Cantidad", unObjeto.Cantidad);
                 cmd.Parameters.AddWithValue("@Precio", unObjeto.Precio);
+                cmd.Parameters.AddWithValue("@Entregado", unObjeto.Entregado);
                 cmd.Connection = cn;
                 
                 

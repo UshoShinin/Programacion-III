@@ -4,10 +4,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortLog", "PortLog\PortLog.csproj", "{A784F36D-089D-4824-9D74-5B1AC7A136B7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B1746782-D3FA-4A9F-9264-4756450071F7} = {B1746782-D3FA-4A9F-9264-4756450071F7}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{64A47880-51B7-4CB0-A47B-9B7EA95F2B11}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositorios", "Repositorios\Repositorios.csproj", "{39E9A8F2-E514-4857-9261-F052C75CF3CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFProductos", "WCFProductos\WCFProductos.csproj", "{B1746782-D3FA-4A9F-9264-4756450071F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +32,10 @@ Global
 		{39E9A8F2-E514-4857-9261-F052C75CF3CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39E9A8F2-E514-4857-9261-F052C75CF3CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39E9A8F2-E514-4857-9261-F052C75CF3CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1746782-D3FA-4A9F-9264-4756450071F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1746782-D3FA-4A9F-9264-4756450071F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1746782-D3FA-4A9F-9264-4756450071F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1746782-D3FA-4A9F-9264-4756450071F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

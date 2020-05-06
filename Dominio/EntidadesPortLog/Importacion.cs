@@ -18,7 +18,10 @@ namespace Dominio.EntidadesPortLog
         private Producto producto;
         private int cantidad;
         private int precio;
+        private string entregado;
+
         #endregion
+
 
         #region Propiedades
 
@@ -61,11 +64,13 @@ namespace Dominio.EntidadesPortLog
             get { return precio; }
             set { precio = value; }
         }
+        public string Entregado
+        {
+            get { return entregado; }
+            set { entregado = value; }
+        }
 
         #endregion
-        public bool Validar()
-        {
-            return fechaIngreso<=fechaSalidaPrevista;
-        }
+
     }
 }

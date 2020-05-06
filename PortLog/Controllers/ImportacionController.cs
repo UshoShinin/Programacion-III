@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Dominio.EntidadesPortLog;
 using Dominio.InterfacesRepositorios;
 using Repositorios;
+using PortLog.RefServPortLog;
 
 namespace PortLog.Controllers
 {
@@ -45,12 +46,14 @@ namespace PortLog.Controllers
         }
         public ActionResult Create(string Id)
         {
-
             if (Id == null) return View();
             int cod;
             Int32.TryParse(Id,out cod);//No se logra parsear el resultado del selec a int para utilizar el FindById
-            Producto P = repoP.FindById(cod);
-            return View(new Importacion {Producto=P});
+            ServicioPortLogClient US = new ServicioPortLogClient();
+            US.Open();
+            DtoProducto P = US.ProductoXId(cod);
+            US.Close();
+            return View(new DtoImportacion {Producto=P});
         }
         public ActionResult SelectProd() {
             IEnumerable<Producto> productos = repoP.FindAll();
@@ -63,18 +66,21 @@ namespace PortLog.Controllers
             return View(productos);
         }
         [HttpPost]
-        public ActionResult Create(Importacion importacion) {
+        public ActionResult Create(DtoImportacion importacion) {
             {
                 try
                 {
                     if (ModelState.IsValid)
                     {
-                        if (importacion.Validar()) {
-                            importacion.Producto = repoP.FindById(importacion.Cod);
-                            if (repo.Add(importacion))
-                                return RedirectToAction("Index");
+                        ServicioPortLogClient unServicio = new ServicioPortLogClient();
+                        unServicio.Open();
+                        importacion.Producto = unServicio.ProductoXId(importacion.Cod);
+                        importacion.Entregado = "No";
+                        if (unServicio.AgregarImportacion(importacion))
+                        {
+                            unServicio.Close();
+                            return RedirectToAction("SelectProd");
                         }
-                        
                     }
                     return View(importacion);
                 }

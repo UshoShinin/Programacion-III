@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7789786c-e3ee-4463-befd-733ec4f4b2ef" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:59720/ServicioPortLog.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServicioPortLog.xsd" MetadataType="Schema" ID="c1a0cd70-d8e9-44e2-9a8c-d2e81cd0e730" SourceId="1" SourceUrl="http://localhost:59720/ServicioPortLog.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServicioPortLog.disco" MetadataType="Disco" ID="808a7d72-4828-47de-bd48-2cd7cc3baf20" SourceId="1" SourceUrl="http://localhost:59720/ServicioPortLog.svc?disco" />
+    <MetadataFile FileName="ServicioPortLog1.xsd" MetadataType="Schema" ID="082e0aec-ae39-4397-b608-f6c16d6c34f9" SourceId="1" SourceUrl="http://localhost:59720/ServicioPortLog.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServicioPortLog.wsdl" MetadataType="Wsdl" ID="97f48f9a-1f79-44e6-a047-2db074ec3310" SourceId="1" SourceUrl="http://localhost:59720/ServicioPortLog.svc?wsdl" />
+    <MetadataFile FileName="ServicioPortLog2.xsd" MetadataType="Schema" ID="fec9896d-1a49-413a-9fa8-3075a11d39d5" SourceId="1" SourceUrl="http://localhost:59720/ServicioPortLog.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

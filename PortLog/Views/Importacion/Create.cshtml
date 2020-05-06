@@ -1,4 +1,4 @@
-﻿@model Dominio.EntidadesPortLog.Importacion
+﻿@model PortLog.RefServPortLog.DtoImportacion
 
 <form action="/Importacion/Create" method="post" class="col-md-6">
     <h4>Crear nueva importación</h4>
@@ -18,7 +18,7 @@
         <div class="form-group">
             <label class="control-label col-md-2">Cod producto:</label>
             <div class="col-md-10">
-                <input type="text" name="cod" readonly class="form-control" value="@Model.Producto.Cod" />
+                <input type="text" name="cod" readonly class="form-control" value="@Model.Producto.cod" />
             </div>
         </div>
 
@@ -49,7 +49,7 @@
     <h4>Datos del producto</h4>
     <div class="form-horizontal">
         <div class="form-group">
-            <label class="col-md-12">Código: @Model.Producto.Cod</label>
+            <label class="col-md-12">Código: @Model.Producto.cod</label>
         </div>
         <div class="form-group">
             <label class="col-md-12">Nombre: @Model.Producto.Nombre</label>

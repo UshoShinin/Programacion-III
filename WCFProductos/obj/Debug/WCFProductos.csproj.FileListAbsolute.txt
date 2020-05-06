@@ -1,0 +1,12 @@
+C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Programacion-III\WCFProductos\bin\WCFProductos.dll.config
+C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Programacion-III\WCFProductos\bin\WCFProductos.dll
+C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Programacion-III\WCFProductos\bin\WCFProductos.pdb
+C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Programacion-III\WCFProductos\obj\Debug\WCFProductos.csprojAssemblyReference.cache
+C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Programacion-III\WCFProductos\obj\Debug\WCFProductos.csproj.CoreCompileInputs.cache
+C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Programacion-III\WCFProductos\obj\Debug\WCFProductos.dll
+C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Programacion-III\WCFProductos\obj\Debug\WCFProductos.pdb
+C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Programacion-III\WCFProductos\bin\Dominio.dll
+C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Programacion-III\WCFProductos\bin\Repositorios.dll
+C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Programacion-III\WCFProductos\bin\Dominio.pdb
+C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Programacion-III\WCFProductos\bin\Repositorios.pdb
+C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Programacion-III\WCFProductos\obj\Debug\WCFProductos.csproj.CopyComplete
