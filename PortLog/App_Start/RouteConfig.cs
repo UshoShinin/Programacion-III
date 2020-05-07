@@ -16,7 +16,7 @@ namespace PortLog
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Importacion", action = "SelectProd", id = UrlParameter.Optional }
+                defaults: new { controller = "Importacion", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<Dominio.EntidadesPortLog.Importacion>
+@model IEnumerable<PortLog.RefServPortLog.DtoProducto>
 @if (Model != null)
 {
     <table class="table">
@@ -10,16 +10,22 @@
             <th>
                 Nombre
             </th>
+            <th>
+                Stock
+            </th>
         </tr>
 
         @foreach (var item in Model)
         {
             <tr>
                 <td>
-                    @item.Cod
+                    @item.cod
                 </td>
                 <td>
                     @item.Nombre
+                </td>
+                <td>
+                    @item.Stock
                 </td>
             </tr>
         }
@@ -28,7 +34,7 @@
 
 }
 else {
-    <p>No hay importaciones registradas</p>
+    <p>No hay productos sin retirar</p>
 }
 
 

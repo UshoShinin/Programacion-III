@@ -32,6 +32,9 @@ namespace PortLog.RefServPortLog {
         private string RutField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StockField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int codField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -79,6 +82,19 @@ namespace PortLog.RefServPortLog {
                 if ((object.ReferenceEquals(this.RutField, value) != true)) {
                     this.RutField = value;
                     this.RaisePropertyChanged("Rut");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Stock {
+            get {
+                return this.StockField;
+            }
+            set {
+                if ((this.StockField.Equals(value) != true)) {
+                    this.StockField = value;
+                    this.RaisePropertyChanged("Stock");
                 }
             }
         }
@@ -262,6 +278,12 @@ namespace PortLog.RefServPortLog {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioPortLog/AgregarImportacion", ReplyAction="http://tempuri.org/IServicioPortLog/AgregarImportacionResponse")]
         System.Threading.Tasks.Task<bool> AgregarImportacionAsync(PortLog.RefServPortLog.DtoImportacion DtoImp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioPortLog/MostrarProductos", ReplyAction="http://tempuri.org/IServicioPortLog/MostrarProductosResponse")]
+        PortLog.RefServPortLog.DtoProducto[] MostrarProductos();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioPortLog/MostrarProductos", ReplyAction="http://tempuri.org/IServicioPortLog/MostrarProductosResponse")]
+        System.Threading.Tasks.Task<PortLog.RefServPortLog.DtoProducto[]> MostrarProductosAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -305,6 +327,14 @@ namespace PortLog.RefServPortLog {
         
         public System.Threading.Tasks.Task<bool> AgregarImportacionAsync(PortLog.RefServPortLog.DtoImportacion DtoImp) {
             return base.Channel.AgregarImportacionAsync(DtoImp);
+        }
+        
+        public PortLog.RefServPortLog.DtoProducto[] MostrarProductos() {
+            return base.Channel.MostrarProductos();
+        }
+        
+        public System.Threading.Tasks.Task<PortLog.RefServPortLog.DtoProducto[]> MostrarProductosAsync() {
+            return base.Channel.MostrarProductosAsync();
         }
     }
 }

@@ -29,4 +29,16 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="MostrarProductos">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MostrarProductosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WCFProductos" minOccurs="0" name="MostrarProductosResult" nillable="true" type="q3:ArrayOfDtoProducto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

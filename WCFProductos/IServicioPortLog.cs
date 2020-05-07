@@ -18,6 +18,10 @@ namespace WCFProductos
         [OperationContract]
         bool AgregarImportacion(DtoImportacion DtoImp);
 
+        [OperationContract]
+        IEnumerable<DtoProducto> MostrarProductos();
+
+
         // TODO: agregue aquí sus operaciones de servicio
     }
 

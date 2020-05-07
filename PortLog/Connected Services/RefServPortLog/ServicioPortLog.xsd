@@ -5,6 +5,7 @@
       <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Peso" type="xs:int" />
       <xs:element minOccurs="0" name="Rut" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Stock" type="xs:int" />
       <xs:element minOccurs="0" name="cod" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
@@ -21,4 +22,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DtoImportacion" nillable="true" type="tns:DtoImportacion" />
+  <xs:complexType name="ArrayOfDtoProducto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DtoProducto" nillable="true" type="tns:DtoProducto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDtoProducto" nillable="true" type="tns:ArrayOfDtoProducto" />
 </xs:schema>

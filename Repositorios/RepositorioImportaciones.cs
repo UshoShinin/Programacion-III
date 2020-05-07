@@ -62,7 +62,7 @@ namespace Repositorios
             try
             {
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "SELECT * FROM Importacion";
+                cmd.CommandText = "SELECT * FROM Importacion I JOIN Producto P on I.CodProd= P.Cod";
                 cmd.Connection = cn;
                 cn.Open();
 
@@ -75,8 +75,18 @@ namespace Repositorios
                     {
                         Importaciones.Add(new Importacion
                         {
-                            Cod = (int)readerImportacion["Cod"],
-                            
+
+                            FechaIngreso = (DateTime)readerImportacion["FechaIngreso"],
+                            FechaSalidaPrevista = (DateTime)readerImportacion["FechaSalida"],
+                            Cantidad = (int)readerImportacion["Cantidad"],
+                            Precio = (int)readerImportacion["Precio"],
+                            Entregado = readerImportacion["Entregado"].ToString(),
+                            Producto = new Producto {
+                                Cod = (int)readerImportacion["Cod"],
+                                Nombre = readerImportacion["Nombre"].ToString(),
+                                Peso = (int)readerImportacion["Peso"],
+                                Rut = readerImportacion["RUT"].ToString(),
+                            }
                         });
                     }
                     cn.Close();

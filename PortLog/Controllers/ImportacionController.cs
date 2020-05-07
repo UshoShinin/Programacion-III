@@ -19,30 +19,13 @@ namespace PortLog.Controllers
         // GET: Importacion
         public ActionResult Index()
         {
-            IEnumerable<Importacion> importaciones = repo.FindAll();
-            if (importaciones == null || importaciones.Count() == 0)
-            {
-                ViewBag.Mensaje = "No hay importaciones registrados";
-                importaciones = new List<Importacion>(); // Esto es para evitar que el modelo llegue en null a la vista
-            }
-            else
-                ViewBag.Mensaje = "Operación exitosa";
-            return View(importaciones);
-        }
-        [HttpPost]
+            ServicioPortLogClient US = new ServicioPortLogClient();
 
-        public ActionResult Index(Importacion unaImportacion)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    if (repo.Add(unaImportacion))
-                        return RedirectToAction("Index");
-                }
-                return View(unaImportacion);
-            }
-            catch { return View(); }
+            
+            US.Open();
+            IEnumerable<DtoProducto> Prdos = US.MostrarProductos();
+            US.Close();
+            return View(Prdos);
         }
         public ActionResult Create(string Id)
         {
@@ -79,7 +62,7 @@ namespace PortLog.Controllers
                         if (unServicio.AgregarImportacion(importacion))
                         {
                             unServicio.Close();
-                            return RedirectToAction("SelectProd");
+                            return RedirectToAction("Index");
                         }
                     }
                     return View(importacion);

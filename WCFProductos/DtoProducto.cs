@@ -19,5 +19,8 @@ namespace WCFProductos
         public int Peso { get; set; }
         [DataMember]
         public string Rut { get; set; }
+        [DataMember]
+        public int Stock { get; set; }
+
     }
 }
