@@ -1,0 +1,28 @@
+﻿@model Dominio.EntidadesPortLog.Usuario
+
+@{
+    ViewBag.Title = "Editar usuario";
+}
+
+<h2>Buscar el usuario</h2>
+<div>
+    <form id="inicioModificacion" action="/ABMUsu/Edit" method="get">
+        <label for="CI">Ingrese la CI del usuario a buscar</label>
+        <input type="text" id="CI" name="CICliente" placeholder="Ingrese aquí la CI del usuario" />
+        <input type="submit" value="Buscar" id="buscar" />
+    </form>
+</div>
+<div>
+    <!-- Solo se muestra si el cliente no es null. Cuando se ingrese desde un link seguramente será null -->
+    @if (Model != null)
+    {
+        <form name="modificacion" id="modificacion" action="/ABMUsu/Edit" method="post">
+           
+            <div><span>CI: </span><input type="text" name="ci" id="ci" value="@Model.CI" /></div>
+            <div><span>Password: </span><input type="text" name="pass" id="pass" value="@Model.Password" /></div>
+            <div><span>Rol: </span><input type="text" name="rol" id="rol" value="@Model.Rol" /></div>
+
+            <input type="submit" value="Guardar modificación" id="modificar" name="modificar" />
+        </form>
+    }
+</div>
