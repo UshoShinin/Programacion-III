@@ -59,57 +59,5 @@ namespace PortLog.Controllers
         }
 
         // GET: Clientes/Edit/?idCliente=5
-        public ActionResult Edit(int? CIUsuario)
-        {
-            if (CIUsuario == null) return View(new Usuario());
-            Usuario unUsuario = repoU.FindById(CIUsuario);
-            return View(CIUsuario);
-
-        }
-
-        // POST: Clientes/Edit/5
-        [HttpPost]
-        public ActionResult Edit(Usuario unUsuario)
-        {
-            try
-            {
-                // TODO: Add update logic here
-                if (unUsuario == null) return View();
-                if (repoU.Update(unUsuario))
-                    return RedirectToAction("Index");
-                else
-                    return View(unUsuario);
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Clientes/Delete/5
-        public ActionResult Delete(int? CIUsuario)
-        {
-            if (CIUsuario == null) return View();
-            Usuario unUsuario = repoU.FindById(CIUsuario);
-            return View(unUsuario);
-        }
-
-        // POST: Clientes/Delete/5
-        [HttpPost]
-        public ActionResult Delete(Usuario unUsuario)
-        {
-            try
-            {
-                if (unUsuario == null) return View();
-                if (repoU.Remove(unUsuario.CI))
-                    return RedirectToAction("Index");
-                else
-                    return View(unUsuario);
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

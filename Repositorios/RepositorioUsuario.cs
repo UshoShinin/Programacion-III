@@ -18,7 +18,33 @@ namespace Repositorios
 
         public bool Add(Usuario unObjeto)
         {
-            throw new NotImplementedException();
+            //No tiene sentido seguir adelante si el objeto es null o no es válido
+            if (unObjeto == null || !unObjeto.ValidarUsuario()) return false;
+            //Preparar la conexión
+            SqlConnection cn = new SqlConnection(cadenaConexion);
+            try
+            {
+                //Preparar el comando incluyendo: la conexión, la consulta y si se requieren los parámetros.
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "INSERT INTO Usuario VALUES (@CI,@Pass,@rol)";
+                cmd.Connection = cn;
+                //observar las dos maneras de incluir un parámetro; en general se elige una, acá están para ejemplificar
+
+                cmd.Parameters.AddWithValue("@CI", unObjeto.CI);
+                cmd.Parameters.AddWithValue("@Pass", unObjeto.Password);
+                cmd.Parameters.AddWithValue("@rol", unObjeto.Rol);
+                //Todo pronto para ejecutar, se abre la conexión y se ejecuta.
+                cn.Open();
+                int filas = cmd.ExecuteNonQuery();
+                cn.Close();
+                return (filas == 1);
+
+            }
+            //en cada excepción poner un punto de parada para inspeccionar la instancia de la excepción (en este caso ex)
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         public IEnumerable<Usuario> FindAll()

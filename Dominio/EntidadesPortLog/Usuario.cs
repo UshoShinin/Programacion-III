@@ -29,6 +29,9 @@ namespace Dominio.EntidadesPortLog
             get { return rol; }
             set { rol = value; }
         }
+        public bool ValidarUsuario() {
+            return true;
+        }
 
     }
 }

@@ -137,6 +137,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ABMUsuController.cs" />
     <Compile Include="Controllers\GeneradorController.cs" />
     <Compile Include="Controllers\ImportacionController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -161,6 +162,7 @@
     <Content Include="Views\Importacion\SelectClient.cshtml" />
     <Content Include="Views\Importacion\Show.cshtml" />
     <Content Include="Views\Generador\Index.cshtml" />
+    <Content Include="Views\ABMUsu\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
