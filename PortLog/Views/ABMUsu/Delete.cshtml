@@ -1,0 +1,28 @@
+﻿@model Dominio.EntidadesPortLog.Usuario
+
+@{
+    ViewBag.Title = "Editar usuario";
+}
+
+<h2>Buscar el usuario</h2>
+<div>
+    <form id="inicioEliminacion" action="/ABMUsu/Delete" method="get">
+        <label for="Ci">Ingrese la CI del usuario a buscar</label>
+        <input type="text" id="CI" name="CIUsuario" placeholder="Ingrese aquí la CI del usuario a borrar" />
+        <input type="submit" value="Buscar" id="buscar" />
+    </form>
+</div>
+<div>
+    <!-- Solo se muestra si el cliente no es null. Cuando se ingrese desde un link seguramente será null -->
+    @if (Model != null)
+    {
+        <form name="eliminacion" id="eliminacion" action="/ABMUsu/Delete" method="post">
+            
+            <div><span>CI: </span><span>@Model.CI</span></div>
+            <div><span>Password: </span><span>@Model.Password</span></div>
+            <div><span>Rol: </span><span>@Model.Rol</span></div>
+    
+            <input type="submit" value="Confirmar eliminación" name="Eliminar" class="btn btn-default" />
+        </form>
+    }
+</div>
