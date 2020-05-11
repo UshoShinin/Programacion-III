@@ -41,10 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntidadesPortLog\Cliente.cs" />
+    <Compile Include="EntidadesPortLog\Gestion.cs" />
     <Compile Include="EntidadesPortLog\Importacion.cs" />
     <Compile Include="EntidadesPortLog\Producto.cs" />
     <Compile Include="EntidadesPortLog\Usuario.cs" />
     <Compile Include="InterfacesRepositorios\IRepositorio.cs" />
+    <Compile Include="ManejoDeArchivos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

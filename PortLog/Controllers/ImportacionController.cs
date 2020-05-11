@@ -16,6 +16,8 @@ namespace PortLog.Controllers
     {
         private RepositorioImportaciones repo = new RepositorioImportaciones();
         private RepositorioProducto repoP = new RepositorioProducto();
+        private RepositorioCliente repoC = new RepositorioCliente();
+
         // GET: Importacion
         public ActionResult Index()
         {
@@ -42,12 +44,45 @@ namespace PortLog.Controllers
             IEnumerable<Producto> productos = repoP.FindAll();
             if (productos == null || productos.Count() == 0)
             {
-                ViewBag.Mensaje = "No hay clientes registrados";
+                ViewBag.Mensaje = "No hay productos disponibles";
             }
             else
                 ViewBag.Mensaje = "Operación exitosa";
             return View(productos);
         }
+        public ActionResult SelectClient()
+        {
+            IEnumerable<Cliente> Clientes = repoC.FindAllWithImport();
+            if (Clientes == null || Clientes.Count() == 0)
+            {
+                ViewBag.Mensaje = "No hay clientes registrados";
+            }
+            else
+                ViewBag.Mensaje = "Operación exitosa";
+            return View(Clientes);
+        }
+        public ActionResult Show(string Rut) {
+            IEnumerable<Importacion> ImportacionesPendientes = repo.FindAllClientsByRut(Rut);
+            Cliente Cli = repoC.FindById(Rut);
+            Gestion G = repo.GetGestionData();
+            bool Des = (DateTime.Now.Year - Cli.FechaIngreso.Year)>=G.Anios;
+            double days;
+            double Total = 0;
+            foreach (Importacion Im in ImportacionesPendientes) {
+                if (Im.FechaSalidaPrevista < DateTime.Now) days = (DateTime.Now- Im.FechaIngreso).TotalDays;
+                else days = (Im.FechaSalidaPrevista- Im.FechaIngreso).TotalDays;
+                Total += days * Im.Precio;
+            }
+            if (Des) {
+                Total -= Total / 100 * G.Descuento;
+                    }
+            Total = Total/100*G.Comision;
+            ViewBag.Total = Total;
+           
+
+return View(Cli);
+        }
+
         [HttpPost]
         public ActionResult Create(DtoImportacion importacion) {
             {

@@ -16,12 +16,3 @@ C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Programacion-III\Reposi
 C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Programacion-III\Repositorios\obj\Debug\Repositorios.csproj.CopyComplete
 C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Programacion-III\Repositorios\obj\Debug\Repositorios.dll
 C:\Users\Usho\Documents\ORT\Programacin\Proyecto\PortLog\Programacion-III\Repositorios\obj\Debug\Repositorios.pdb
-C:\Users\Admin\Desktop\Programacion-III\Repositorios\obj\Debug\Repositorios.csprojAssemblyReference.cache
-C:\Users\Admin\Desktop\Programacion-III\Repositorios\obj\Debug\Repositorios.csproj.CoreCompileInputs.cache
-C:\Users\Admin\Desktop\Programacion-III\Repositorios\obj\Debug\Repositorios.dll
-C:\Users\Admin\Desktop\Programacion-III\Repositorios\obj\Debug\Repositorios.pdb
-C:\Users\Admin\Desktop\Programacion-III\Repositorios\bin\Debug\Repositorios.dll
-C:\Users\Admin\Desktop\Programacion-III\Repositorios\bin\Debug\Repositorios.pdb
-C:\Users\Admin\Desktop\Programacion-III\Repositorios\bin\Debug\Dominio.dll
-C:\Users\Admin\Desktop\Programacion-III\Repositorios\bin\Debug\Dominio.pdb
-C:\Users\Admin\Desktop\Programacion-III\Repositorios\obj\Debug\Repositorios.csproj.CopyComplete

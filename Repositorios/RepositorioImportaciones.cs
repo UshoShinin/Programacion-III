@@ -101,6 +101,101 @@ namespace Repositorios
             }
         }
 
+        public IEnumerable<Importacion> FindAllSP()//Este es un FindAll pero sin cargar el producto, para la generación de archivos
+        {
+            SqlConnection cn = new SqlConnection(cadenaConexion);
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "SELECT * FROM Importacion";
+                cmd.Connection = cn;
+                cn.Open();
+
+                SqlDataReader readerImportacion = cmd.ExecuteReader();
+
+                if (readerImportacion.HasRows)
+                {
+                    List<Importacion> Importaciones = new List<Importacion>();
+                    while (readerImportacion.Read())
+                    {
+                        Importaciones.Add(new Importacion
+                        {
+                            Cod = (int)readerImportacion["Id"],
+                            FechaIngreso = (DateTime)readerImportacion["FechaIngreso"],
+                            FechaSalidaPrevista = (DateTime)readerImportacion["FechaSalida"],
+                            Cantidad = (int)readerImportacion["Cantidad"],
+                            Precio = (int)readerImportacion["Precio"],
+                            Entregado = readerImportacion["Entregado"].ToString(),
+                            Producto = new Producto
+                            {
+                                Cod = (int)readerImportacion["CodProd"],
+                            }
+                        });
+                    }
+                    cn.Close();
+                    return Importaciones;
+                }
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public IEnumerable<Importacion> FindAllClientsByRut(object Rut)
+        {
+            string RUT = (string)Rut;
+            SqlConnection cn = new SqlConnection(cadenaConexion);
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "SELECT I.*,P.* FROM Importacion I JOIN Producto P on I.CodProd= P.Cod JOIN Cliente C ON P.RUT = C.RUT where C.RUT = @Rut AND I.Entregado='No'";
+                cmd.Connection = cn;
+                cmd.Parameters.AddWithValue("@Rut", RUT);
+                cn.Open();
+
+                SqlDataReader readerImportacion = cmd.ExecuteReader();
+
+                if (readerImportacion.HasRows)
+                {
+                    List<Importacion> Importaciones = new List<Importacion>();
+                    while (readerImportacion.Read())
+                    {
+                        int Cod = (int)readerImportacion["Cod"];
+                        string Nombre = readerImportacion["Nombre"].ToString();
+                        int Peso = (int)readerImportacion["Peso"];
+                        string Ruti = readerImportacion["RUT"].ToString();
+                        Importaciones.Add(new Importacion
+                        {
+                            FechaIngreso = (DateTime)readerImportacion["FechaIngreso"],
+                            FechaSalidaPrevista = (DateTime)readerImportacion["FechaSalida"],
+                            Cantidad = (int)readerImportacion["Cantidad"],
+                            Precio = (int)readerImportacion["Precio"],
+                            Entregado = readerImportacion["Entregado"].ToString(),
+                            Producto = new Producto
+                            {
+                                Cod = (int)readerImportacion["Cod"],
+                                Nombre = readerImportacion["Nombre"].ToString(),
+                                Peso = (int)readerImportacion["Peso"],
+                                Rut = readerImportacion["RUT"].ToString()
+                            }
+                        });
+                    }
+                    cn.Close();
+                    return Importaciones;
+                }
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+
         public Importacion FindById(object Id)
         {
             throw new NotImplementedException();
@@ -115,5 +210,77 @@ namespace Repositorios
         {
             throw new NotImplementedException();
         }
+
+        
+        public IEnumerable<Gestion> FindAllGestion()
+        {
+            SqlConnection cn = new SqlConnection(cadenaConexion);
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "Select * FROM Gestion";
+                cmd.Connection = cn;
+                cn.Open();
+                SqlDataReader readerGestion = cmd.ExecuteReader();
+                if (readerGestion.HasRows)
+                {
+                    List<Gestion> GestionList = new List<Gestion>();
+                    while (readerGestion.Read())
+                    {
+                        GestionList.Add( new Gestion
+                        {
+                            Descuento = (int)readerGestion["descuento"],
+                            Anios = (int)readerGestion["añosNecesarios"],
+                            Comision =(int)readerGestion["comision"],
+                            Fecha = (DateTime)readerGestion["fecha"]
+
+                        });
+                    }
+                    cn.Close();
+                    return GestionList;
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public Gestion GetGestionData()
+        {
+            SqlConnection cn = new SqlConnection(cadenaConexion);
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "Select * FROM Gestion WHERE Fecha=(SELECT MAX(Fecha) FROM Gestion)";
+                cmd.Connection = cn;
+                cn.Open();
+                SqlDataReader readerGestion = cmd.ExecuteReader();
+                Gestion G = null;
+                if (readerGestion.HasRows)
+                {
+                    if (readerGestion.Read())
+                    {
+                        G = new Gestion
+                        {
+                            Descuento = (int)readerGestion["descuento"],
+                            Anios = (int)readerGestion["añosNecesarios"],
+                            Comision = (int)readerGestion["comision"]
+                        };
+                    }
+                    cn.Close();
+                }
+                return G;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+
+
+
     }
 }

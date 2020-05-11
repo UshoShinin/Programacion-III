@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Dominio.EntidadesPortLog.Cliente>
+
+<div style="padding-left:37%;">
+    <form action="/Importacion/Show">
+        <h4>Seleccionar Cliente</h4>
+        @if (Model != null)
+        {
+            <select name="Rut">
+                @foreach (var item in Model)
+                {
+                    <option value="@item.Rut">@item.Nombre</option>
+                }
+            </select>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Mostrar" class="btn btn-default" />
+                </div>
+            </div>
+        }
+        else
+        {
+            <h4>No hay clientes para mostrar</h4>
+        }
+
+    </form>
+</div>
