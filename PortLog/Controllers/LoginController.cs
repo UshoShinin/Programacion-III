@@ -17,12 +17,10 @@ namespace PortLog.Controllers
         // GET: Login
         public ActionResult Index()
         {
+            Session["rol"] = null;
             return View();
         }
 
-        public ActionResult HolaMama() {
-            return View();
-        }
         [HttpPost]
         public ActionResult Logearse(Usuario usuario)
         {
@@ -35,7 +33,11 @@ namespace PortLog.Controllers
                     if (usu != null && usu.Password == usuario.Password && usu.Rol == usuario.Rol)
                     {
                         ViewBag.Message = "Exito";
-                        return RedirectToAction("HolaMama");
+                        if (usu.Rol == "Admin") Session["rol"] = "Admin";
+                        else Session["rol"] = "Deposito";
+
+                        return RedirectToAction("Index", "Importacion");
+
                     }
                     else
                     {

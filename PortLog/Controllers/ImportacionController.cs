@@ -21,17 +21,20 @@ namespace PortLog.Controllers
         // GET: Importacion
         public ActionResult Index()
         {
-            ServicioPortLogClient US = new ServicioPortLogClient();
+            if (Session["rol"] != null) {
 
+                ServicioPortLogClient US = new ServicioPortLogClient();
+                US.Open();
+                IEnumerable<DtoProducto> Prdos = US.MostrarProductos();
+                US.Close();
+                return View(Prdos);
+            } 
+            else return RedirectToAction("Index", "Login");
             
-            US.Open();
-            IEnumerable<DtoProducto> Prdos = US.MostrarProductos();
-            US.Close();
-            return View(Prdos);
         }
         public ActionResult Create(string Id)
         {
-            if (Id == null) return View();
+            if (Id == null) return RedirectToAction("SelectProd");
             int cod;
             Int32.TryParse(Id,out cod);//No se logra parsear el resultado del selec a int para utilizar el FindById
             ServicioPortLogClient US = new ServicioPortLogClient();
@@ -41,27 +44,39 @@ namespace PortLog.Controllers
             return View(new DtoImportacion {Producto=P});
         }
         public ActionResult SelectProd() {
-            IEnumerable<Producto> productos = repoP.FindAll();
-            if (productos == null || productos.Count() == 0)
+            if (Session["rol"] == "Deposito")
             {
-                ViewBag.Mensaje = "No hay productos disponibles";
+                IEnumerable<Producto> productos = repoP.FindAll();
+                if (productos == null || productos.Count() == 0)
+                {
+                    ViewBag.Mensaje = "No hay productos disponibles";
+                }
+                else
+                    ViewBag.Mensaje = "Operación exitosa";
+                return View(productos);
             }
-            else
-                ViewBag.Mensaje = "Operación exitosa";
-            return View(productos);
+            else if (Session["rol"] == "Admin") return RedirectToAction("Index", "Importacion");
+            else return RedirectToAction("Index","Login");
+            
         }
         public ActionResult SelectClient()
         {
-            IEnumerable<Cliente> Clientes = repoC.FindAllWithImport();
-            if (Clientes == null || Clientes.Count() == 0)
+            if (Session["rol"] == "Admin")
             {
-                ViewBag.Mensaje = "No hay clientes registrados";
-            }
-            else
-                ViewBag.Mensaje = "Operación exitosa";
-            return View(Clientes);
+                IEnumerable<Cliente> Clientes = repoC.FindAllWithImport();
+                if (Clientes == null || Clientes.Count() == 0)
+                {
+                    ViewBag.Mensaje = "No hay clientes registrados";
+                }
+                else
+                    ViewBag.Mensaje = "Operación exitosa";
+                return View(Clientes);
+                }
+            else if (Session["rol"] == "Deposito") return RedirectToAction("Index", "Importacion");
+            else return RedirectToAction("Index", "Login");
         }
         public ActionResult Show(string Rut) {
+            if (Rut == null) return RedirectToAction("SelectClient");
             IEnumerable<Importacion> ImportacionesPendientes = repo.FindAllClientsByRut(Rut);
             Cliente Cli = repoC.FindById(Rut);
             Gestion G = repo.GetGestionData();

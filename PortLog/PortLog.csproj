@@ -163,6 +163,7 @@
     <Content Include="Views\Importacion\Show.cshtml" />
     <Content Include="Views\Generador\Index.cshtml" />
     <Content Include="Views\ABMUsu\Create.cshtml" />
+    <Content Include="Views\ABMUsu\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

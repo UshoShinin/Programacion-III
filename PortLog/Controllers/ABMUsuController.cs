@@ -17,26 +17,15 @@ namespace PortLog.Controllers
         private RepositorioUsuario repoU = new RepositorioUsuario();
 
         // GET: Admin
-        public ActionResult Index(int? CI)
+        public ActionResult Index()
         {
-            if (Session["Admin"] != null)
-                return RedirectToAction("Create", "ABMUsu");
-            return View();
-
-           /* if (CI != null)
-            {
-                Empleado e = SoftwORT.Instancia.ObtenerEmpXId(id.Value);
-                ViewBag.EmpleadoAModificar = e;
-            }
-            return View(SoftwORT.Instancia.ListaEmpleados);*/
+            if (Session["rol"] == "Admin") return View();
+            else if(Session["rol"] == "Deposito") return RedirectToAction("Index", "Importacion");
+            else return RedirectToAction("Index", "Login");
         }
 
         
         // GET: Usuario/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
 
         // POST: Usuario/Create
         [HttpPost]
