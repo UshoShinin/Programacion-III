@@ -19,8 +19,10 @@ namespace PortLog.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            if (Session["rol"] == "Admin") return View();
-            else if(Session["rol"] == "Deposito") return RedirectToAction("Index", "Importacion");
+            if (Session["rol"] == "Admin") {
+                ViewBag.Message = TempData["Mesagge"];
+                return View(); }
+            else if (Session["rol"] == "Deposito") return RedirectToAction("Index", "Importacion");
             else return RedirectToAction("Index", "Login");
         }
 
@@ -35,8 +37,23 @@ namespace PortLog.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    if (repoU.Add(unUsuario))
+                    if (unUsuario.ValidarUsuario())
+                    {
+                        if (repoU.FindById(unUsuario.CI) != null)
+                        {
+                            if (repoU.Add(unUsuario))
+                                return RedirectToAction("Index");
+                        }
+                        else {
+                            TempData["Mesagge"] = "El usuario que está intentando registrar ya existe";
+                            return RedirectToAction("Index");
+                        }
+                    }
+                    else {
+                        TempData["Mesagge"] = "Datos del usuario no validos";
                         return RedirectToAction("Index");
+                    }
+                    
                 }
 
                 return View(unUsuario);

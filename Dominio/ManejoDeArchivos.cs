@@ -11,20 +11,19 @@ namespace Dominio
 {
     public static class ManejoDeArchivos
     {
-        private static string ArchivoBase = AppDomain.CurrentDomain.BaseDirectory + "\\BaseDeDatos.txt";
+        private static string ArchivoBaseImpo = AppDomain.CurrentDomain.BaseDirectory + "\\Importaciones.txt";
+        private static string ArchivoBaseProd = AppDomain.CurrentDomain.BaseDirectory + "\\Productos.txt";
+        private static string ArchivoBaseUsu = AppDomain.CurrentDomain.BaseDirectory + "\\Usuarios.txt";
+        private static string ArchivoBaseCli = AppDomain.CurrentDomain.BaseDirectory + "\\Clientes.txt";
+        private static string ArchivoBaseGest = AppDomain.CurrentDomain.BaseDirectory + "\\Gestiones.txt";
         //private static string ArchivoBase = "C:\\Usuario\\Usho\\BaseDeDatos.txt";
         public static void GuardarImportaciones(IEnumerable<Importacion> Importaciones,string delimitador)
         {
-            
             try
             {
-                using (StreamWriter sw = new StreamWriter(ArchivoBase, true))
-                {
-                    sw.WriteLine("Importacion");
-                }
                 foreach (Importacion Im in Importaciones)
                 {
-                    using (StreamWriter sw = new StreamWriter(ArchivoBase, true))
+                    using (StreamWriter sw = new StreamWriter(ArchivoBaseImpo, true))
                     {
                         sw.WriteLine(
                             Im.Cod + delimitador+
@@ -51,16 +50,11 @@ namespace Dominio
 
         public static void GuardarProductos(IEnumerable<Producto> Productos, string delimitador)
         {
-
             try
             {
-                using (StreamWriter sw = new StreamWriter(ArchivoBase, true))
-                {
-                    sw.WriteLine("Productos");
-                }
                 foreach (Producto P in Productos)
                 {
-                    using (StreamWriter sw = new StreamWriter(ArchivoBase, true))
+                    using (StreamWriter sw = new StreamWriter(ArchivoBaseProd, true))
                     {
                         sw.WriteLine(
                             P.Cod + delimitador +
@@ -84,16 +78,11 @@ namespace Dominio
 
         public static void GuardarClientes(IEnumerable<Cliente> Clientes, string delimitador)
         {
-
             try
             {
-                using (StreamWriter sw = new StreamWriter(ArchivoBase, true))
-                {
-                    sw.WriteLine("Clientes");
-                }
                 foreach (Cliente C in Clientes)
                 {
-                    using (StreamWriter sw = new StreamWriter(ArchivoBase, true))
+                    using (StreamWriter sw = new StreamWriter(ArchivoBaseCli, true))
                     {
                         sw.WriteLine(
                             C.Rut + delimitador +
@@ -116,16 +105,11 @@ namespace Dominio
 
         public static void GuardarUsuarios(IEnumerable<Usuario> Usuarios, string delimitador)
         {
-
             try
             {
-                using (StreamWriter sw = new StreamWriter(ArchivoBase, true))
-                {
-                    sw.WriteLine("Usuarios");
-                }
                 foreach (Usuario U in Usuarios)
                 {
-                    using (StreamWriter sw = new StreamWriter(ArchivoBase, true))
+                    using (StreamWriter sw = new StreamWriter(ArchivoBaseUsu, true))
                     {
                         sw.WriteLine(
                             U.CI + delimitador +
@@ -151,13 +135,9 @@ namespace Dominio
 
             try
             {
-                using (StreamWriter sw = new StreamWriter(ArchivoBase, true))
-                {
-                    sw.WriteLine("Registros de gestión");
-                }
                 foreach (Gestion G in Gestiones)
                 {
-                    using (StreamWriter sw = new StreamWriter(ArchivoBase, true))
+                    using (StreamWriter sw = new StreamWriter(ArchivoBaseGest, true))
                     {
                         sw.WriteLine(
                             G.Descuento + delimitador +
@@ -178,6 +158,5 @@ namespace Dominio
             catch (Exception) { throw; }
 
         }
-
     }
 }

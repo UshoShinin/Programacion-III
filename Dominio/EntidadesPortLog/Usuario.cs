@@ -30,7 +30,16 @@ namespace Dominio.EntidadesPortLog
             set { rol = value; }
         }
         public bool ValidarUsuario() {
-            return true;
+            bool May = false;
+            bool Min = false;
+            bool Num = false;
+            byte[] bytes = Encoding.ASCII.GetBytes(Password);
+            foreach (byte B in bytes) {
+                if (B > 47 && B < 58) Num = true;
+                else if (B > 64 && B < 91) May = true;
+                else if (B > 96 && B < 123) Min = true;
+            }
+            return (ci > 999999 && ci < 100000000) && Password.Length>5 && May && Min && Num &&(Rol.ToLower()=="admin"|| Rol.ToLower() == "deposito");
         }
 
     }

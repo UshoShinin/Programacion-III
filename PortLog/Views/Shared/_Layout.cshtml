@@ -17,12 +17,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Cerrar sesión", "Index", "Login", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Generar Archivo", "Index", "Generador", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Alta de usuario", "Index", "ABMUsu", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("RealizarImportacion", "SelectProd", "Importacion", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Listar productos", "Index", "Importacion", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Prevision de ganancias", "SelectClient", "Importacion", new { area = "" }, new { @class = "navbar-brand" })
+                @if (Session["rol"] == "Admin")
+                {
+                    @Html.ActionLink("Cerrar sesión", "Index", "Login", new { area = "" }, new { @class = "navbar-brand float-left" });
+                    @Html.ActionLink("Generar Archivo", "Index", "Generador", new { area = "" }, new { @class = "navbar-brand" });
+                    @Html.ActionLink("Listar productos", "Index", "Importacion", new { area = "" }, new { @class = "navbar-brand" });
+                    @Html.ActionLink("Alta de usuario", "Index", "ABMUsu", new { area = "" }, new { @class = "navbar-brand" });
+                    @Html.ActionLink("Prevision de ganancias", "SelectClient", "Importacion", new { area = "" }, new { @class = "navbar-brand" });
+                    
+                }
+                else if (Session["rol"] == "Deposito")
+                {
+                    @Html.ActionLink("Cerrar sesión", "Index", "Login", new { area = "" }, new { @class = "navbar-brand float-left" });
+                    @Html.ActionLink("Generar Archivo", "Index", "Generador", new { area = "" }, new { @class = "navbar-brand" });
+                    @Html.ActionLink("Listar productos", "Index", "Importacion", new { area = "" }, new { @class = "navbar-brand" });
+                    @Html.ActionLink("Realizar Importacion", "SelectProd", "Importacion", new { area = "" }, new { @class = "navbar-brand" });
+                }
+
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

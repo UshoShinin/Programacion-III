@@ -18,6 +18,8 @@ namespace PortLog.Controllers
         public ActionResult Index()
         {
             Session["rol"] = null;
+            //TempData["Mesagge"] = null;
+            ViewBag.Mesagge = TempData["Mesagge"];
             return View();
         }
 
@@ -29,31 +31,28 @@ namespace PortLog.Controllers
                 if (ModelState.IsValid)
                 {
                     Usuario usu = repo.FindById(usuario.CI);
-
-                    if (usu != null && usu.Password == usuario.Password && usu.Rol == usuario.Rol)
-                    {
-                        ViewBag.Message = "Exito";
-                        if (usu.Rol == "Admin") Session["rol"] = "Admin";
-                        else Session["rol"] = "Deposito";
-
-                        return RedirectToAction("Index", "Importacion");
-
-                    }
-                    else
-                    {
-                        ViewBag.Message = "Datos incorrectos";
-                        return RedirectToAction("Index");
-                    }
+                    
+                        if (usu != null && usu.Password == usuario.Password && usu.Rol == usuario.Rol){
+                        
+                                if (usu.Rol == "admin") Session["rol"] = "Admin";
+                                else Session["rol"] = "Deposito";
+                                return RedirectToAction("Index", "Importacion");
+                       
+                        }else{
+                            TempData["Mesagge"] = "Datos incorrectos";
+                            return RedirectToAction("Index");
+                        }
+                    
                 }
                 else {
-                    
+                    TempData["Mesagge"] = "Datos incorrectos";
                     return RedirectToAction("Index");
                 }
             }
             catch
             {
-                ViewBag.Message = "Error";
-                return View();
+                TempData["Mesagge"] = "Error";
+                return RedirectToAction("Index");
             }
            
         }

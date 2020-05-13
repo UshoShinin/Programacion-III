@@ -23,8 +23,8 @@ CREATE TABLE Importacion(
 
 CREATE TABLE Usuario(
 	CI int primary key,
-	Pass varchar(6),
-	rol varchar(20)
+	Pass varchar(20),
+	rol varchar(20) check (rol in('admin','deposito'))
 );
 
 CREATE TABLE Gestion(
@@ -43,7 +43,33 @@ insert into Importacion values(4,'1999-05-01','1999-05-02',999999,6,'Si');
 insert into Gestion values(6,4,20,GETDATE());
 /*SELECT C.RUT FROM Importacion I JOIN Producto P on I.CodProd= P.Cod JOIN Cliente C ON P.RUT = C.RUT group by C.RUT
 SELECT I.* FROM Importacion I JOIN Producto P on I.CodProd= P.Cod JOIN Cliente C ON P.RUT = C.RUT where C.RUT ='123456789102' and I.Entregado = 'No'*/
-Select * FROM Gestion WHERE Fecha=(SELECT MAX(Fecha) FROM Gestion)
 
-SELECT I.* FROM Importacion I JOIN Producto P on I.CodProd= P.Cod JOIN Cliente C ON P.RUT = C.RUT where C.RUT = '123456789102' AND I.Entregado='No'
+INSERT INTO Cliente VALUES
+(098765432109,'2020-02-02','Jorge Rodriguez'),
+(135791357913,'2019-04-26','Empresa de Juguetes'),
+(246802468024,'2008-11-19','Marta Sandoval'),
+(019283746501,'2010-01-16','Primos SRL');
+
+INSERT INTO Producto VALUES
+(6,'Juguete1',5,135791357913),
+(7,'Juguete2',15,135791357913),
+(8,'Lavarropas',50,246802468024),
+(9,'Lavaplatos',65,246802468024),
+(10,'Carne',500,019283746501),
+(11,'Refrescos',340,019283746501),
+(12,'Championes',6,098765432109);
+
+Insert INTO Importacion values
+(5,'2019-05-10','2019-10-10',999999,6,'Si'),
+(7,'2010-05-01','2010-07-10',999999,6,'Si'),
+(5,'2019-09-07','2020-02-02',999999,6,'Si'),
+(10,'2020-03-02','2020-04-03',999999,6,'Si');
+
+INSERT INTO Usuario VALUES
+(40952348,'Holamama2','admin'),
+(39404535,'PapiMiraJuego10','admin'),
+(49835488,'HombreDepo99','deposito'),
+(45860957,'SoyLaMejorContra0','deposito');
+
+
 

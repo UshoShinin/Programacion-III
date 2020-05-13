@@ -13,6 +13,9 @@
             <th>
                 Stock
             </th>
+            <th>
+                Importar
+            </th>
         </tr>
 
         @foreach (var item in Model)
@@ -26,6 +29,12 @@
                 </td>
                 <td>
                     @item.Stock
+                </td>
+                <td>
+                    <form action="/Importacion/Create">
+                        <input hidden type="text" name="Id" value="@item.cod" />
+                        <input type="submit" value="Importar" class="btn btn-default" />
+                    </form>
                 </td>
             </tr>
         }

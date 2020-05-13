@@ -64,11 +64,13 @@ namespace WCFProductos
                 Nombre = p.Nombre,
                 Peso = p.Peso,
                 Rut = p.Rut,
+                Stock = 0
             };
         }
 
         public IEnumerable<DtoProducto> MostrarProductos() {
             RepositorioImportaciones repo = new RepositorioImportaciones();
+            RepositorioProducto repoP = new RepositorioProducto();
             IEnumerable<Importacion> Importaciones = repo.FindAll();
             List<DtoProducto> PreProductos = new List<DtoProducto>();
             List<DtoProducto> Productos = new List<DtoProducto>();
@@ -87,16 +89,14 @@ namespace WCFProductos
                     });
                 }
             }
-
+            foreach (Producto P in repoP.FindAll()) {
+                Productos.Add(PasarProductoADto(P));
+            }
             foreach (DtoProducto P in PreProductos) {
                 int index = Found(P, Productos);
-                if (index != -1)
-                {
+
                     Productos[index].Stock += P.Stock;
-                }
-                else {
-                    Productos.Add(P);
-                }
+
             }
             return Productos;
         }

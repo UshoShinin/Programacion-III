@@ -25,10 +25,6 @@ namespace WCFProductos
         public int precio { get; set; }
         [DataMember]
         public string Entregado { get; set; }
-
-        //public bool Validar()
-        //{
-        //    return FechaIngreso <= FechaSalidaPrevista;
-        //}
+        
     }
 }

@@ -23,14 +23,16 @@ namespace PortLog.Controllers
         // GET: Generador
         public ActionResult Index()
         {
+            if (Session["rol"] != null) {
+                ManejoDeArchivos.GuardarImportaciones(repo.FindAllSP(), "#");
+                ManejoDeArchivos.GuardarProductos(repoP.FindAll(), "#");
+                ManejoDeArchivos.GuardarClientes(repoC.FindAll(), "#");
+                ManejoDeArchivos.GuardarUsuarios(repoU.FindAll(), "#");
+                ManejoDeArchivos.GuardarGestiones(repo.FindAllGestion(), "#");
+                return View();
+            }
+            else return RedirectToAction("Index", "Login");
 
-            ManejoDeArchivos.GuardarImportaciones(repo.FindAllSP(),";");
-            ManejoDeArchivos.GuardarProductos(repoP.FindAll(), ";");
-            ManejoDeArchivos.GuardarClientes(repoC.FindAll(), ";");
-            ManejoDeArchivos.GuardarUsuarios(repoU.FindAll(), ";");
-            ManejoDeArchivos.GuardarGestiones(repo.FindAllGestion(), ";");
-
-            return View();
         }
     }
 }

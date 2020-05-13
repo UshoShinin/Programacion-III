@@ -47,12 +47,7 @@ namespace PortLog.Controllers
             if (Session["rol"] == "Deposito")
             {
                 IEnumerable<Producto> productos = repoP.FindAll();
-                if (productos == null || productos.Count() == 0)
-                {
-                    ViewBag.Mensaje = "No hay productos disponibles";
-                }
-                else
-                    ViewBag.Mensaje = "Operación exitosa";
+                ViewBag.Mesagge = TempData["Mesagge"];
                 return View(productos);
             }
             else if (Session["rol"] == "Admin") return RedirectToAction("Index", "Importacion");
@@ -105,21 +100,31 @@ return View(Cli);
                 {
                     if (ModelState.IsValid)
                     {
-                        ServicioPortLogClient unServicio = new ServicioPortLogClient();
-                        unServicio.Open();
-                        importacion.Producto = unServicio.ProductoXId(importacion.Cod);
-                        importacion.Entregado = "No";
-                        if (unServicio.AgregarImportacion(importacion))
+                        
+                            ServicioPortLogClient unServicio = new ServicioPortLogClient();
+                            unServicio.Open();
+                            importacion.Producto = unServicio.ProductoXId(importacion.Cod);
+                            importacion.Entregado = "No";
+                        if ((Convert.ToDateTime("01/01/0001") != importacion.FechaIngreso && Convert.ToDateTime("01/01/0001") != importacion.FechaSalidaPrevista) && importacion.FechaIngreso <= importacion.FechaSalidaPrevista)
                         {
-                            unServicio.Close();
-                            return RedirectToAction("Index");
+                            if (unServicio.AgregarImportacion(importacion))
+                            {
+                                unServicio.Close();
+                                return RedirectToAction("Index");
+                            }
                         }
+                        else {
+                            TempData["Mesagge"] = "Alguna de las fechas es inválida";
+                            return RedirectToAction("SelectProd");
+                        }
+
+                        
                     }
-                    return View(importacion);
+                    return RedirectToAction("SelectProd");
                 }
                 catch
                 {
-                    return View();
+                    return RedirectToAction("SelectProd");
                 }
             }
         }
